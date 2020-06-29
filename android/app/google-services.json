@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "528858923515",
+    "firebase_url": "https://pochitest-300b2.firebaseio.com",
+    "project_id": "pochitest-300b2",
+    "storage_bucket": "pochitest-300b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528858923515:android:43fabbc232c35a707c8b5e",
+        "android_client_info": {
+          "package_name": "com.example.flutterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528858923515-poaolp48empsv189tqoded3a5mmv4ep6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9rOx5hrFOdds4iY7csynaWGsFAM1WHsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528858923515-poaolp48empsv189tqoded3a5mmv4ep6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
