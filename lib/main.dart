@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/book_,list_page.dart';
 import 'package:provider/provider.dart';
 
 import 'main_model.dart';
@@ -22,7 +23,6 @@ class MyApp extends StatelessWidget {
           ),
           body: Consumer<MainModel>(builder: (context, model, child) {
             return Center(
-              //
               child: Column(
                 children: <Widget>[
                   Text(
@@ -34,7 +34,11 @@ class MyApp extends StatelessWidget {
                   RaisedButton(
                     child: Text('ボタン'),
                     onPressed: () {
-                      model.changePochiText();
+                      //model.changePochiText();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BookListPage()),
+                      );
                     },
                   ),
                 ],
