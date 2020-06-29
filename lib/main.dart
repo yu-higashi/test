@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
           ),
           body: Consumer<MainModel>(builder: (context, model, child) {
             return Center(
+              //
               child: Column(
                 children: <Widget>[
                   Text(
