@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/book_list_model.dart';
+import 'package:flutterapp/presentation/add_book/add_book_page.dart';
 import 'package:provider/provider.dart';
+
+import 'book_list_model.dart';
 
 class BookListPage extends StatelessWidget {
   @override
@@ -27,6 +29,18 @@ class BookListPage extends StatelessWidget {
                 .toList();
             return ListView(
               children: listTiles,
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddBookPage(),
+                fullscreenDialog: true,
+              ),
             );
           },
         ),
