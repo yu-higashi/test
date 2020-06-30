@@ -30,7 +30,44 @@ class AddBookPage extends StatelessWidget {
                   RaisedButton(
                     child: Text('追加する'),
                     onPressed: () async {
-                      await model.addBookToFirebase();
+                      try {
+                        await model.addBookToFirebase();
+
+                        await showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('追加しました！'),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text('OK'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                        Navigator.of(context).pop();
+                      } catch (e) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text(e.toString()),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text('OK'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      }
                     },
                   )
                 ],

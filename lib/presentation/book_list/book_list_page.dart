@@ -32,15 +32,20 @@ class BookListPage extends StatelessWidget {
             );
           },
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => AddBookPage(),
-                fullscreenDialog: true,
-              ),
+        floatingActionButton: Consumer<BookListModel>(
+          builder: (context, model, child) {
+            return FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddBookPage(),
+                    fullscreenDialog: true,
+                  ),
+                );
+                model.fetchBooks();
+              },
             );
           },
         ),
