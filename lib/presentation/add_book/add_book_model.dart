@@ -11,6 +11,7 @@ class AddBookModel extends ChangeNotifier {
     Firestore.instance.collection('books').add(
       {
         'title': bookTitle,
+        'createdAt': Timestamp.now(),
       },
     );
   }
