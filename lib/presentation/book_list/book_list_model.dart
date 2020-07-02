@@ -9,7 +9,14 @@ class BookListModel extends ChangeNotifier {
   Future fetchBooks() async {
     final docs = await Firestore.instance.collection('books').getDocuments();
     //final books = docs.documents.map((doc) => Book(doc['title']));
-    this.books = docs.documents.map((doc) => Book(doc['title'])).toList();
+    this.books = docs.documents.map((doc) => Book(doc)).toList();
     notifyListeners();
+  }
+
+  Future deleteBook(Book book) async {
+    await Firestore.instance
+        .collection('books')
+        .document(book.documentID)
+        .delete();
   }
 }

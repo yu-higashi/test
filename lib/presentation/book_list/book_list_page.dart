@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/domain/Book.dart';
 import 'package:flutterapp/presentation/add_book/add_book_page.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +25,39 @@ class BookListPage extends StatelessWidget {
                 .map(
                   (book) => ListTile(
                     title: Text(book.title),
+                    trailing: IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddBookPage(
+                              book: book,
+                            ),
+                            fullscreenDialog: true,
+                          ),
+                        );
+                      },
+                    ),
+                    onLongPress: () async {
+                      await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('${book.title}を削除しますか？'),
+                            actions: <Widget>[
+                              FlatButton(
+                                child: Text('OK'),
+                                onPressed: () async {
+                                  Navigator.of(context).pop();
+                                  await deleteBook(context, model, book);
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
                   ),
                 )
                 .toList();
@@ -50,6 +84,35 @@ class BookListPage extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+
+  Future deleteBook(
+      BuildContext context, BookListModel model, Book book) async {
+    try {
+      await model.deleteBook(book);
+      await model.fetchBooks();
+    } catch (e) {
+      await _showDialog(context, e.toString());
+    }
+  }
+
+  Future _showDialog(BuildContext context, String body) async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(body),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
