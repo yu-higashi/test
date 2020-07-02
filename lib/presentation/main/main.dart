@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/presentation/login/login_page.dart';
+import 'package:flutterapp/presentation/signup/signup_page.dart';
 import 'package:provider/provider.dart';
 
 import '../book_list/book_list_page.dart';
@@ -38,6 +40,26 @@ class MyApp extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => BookListPage()),
+                      );
+                    },
+                  ),
+                  RaisedButton(
+                    child: Text('ユーザー登録'),
+                    onPressed: () {
+                      //model.changePochiText();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignUpPage()),
+                      );
+                    },
+                  ),
+                  RaisedButton(
+                    child: Text('ログイン'),
+                    onPressed: () {
+                      //model.changePochiText();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
                       );
                     },
                   ),
